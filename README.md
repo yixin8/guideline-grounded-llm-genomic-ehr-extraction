@@ -1,4 +1,4 @@
-# Guideline-Grounded LLM Pipeline for Extracting Genomics-Informed Clinical Recommendations from EHR Notes
+# Guideline-Grounded LLM Pipeline for Extracting Genome-Informed Clinical Recommendations from EHR Notes
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -117,11 +117,11 @@ Model outputs were evaluated against manual chart review (N=18 patients; N=34 do
 If you use this code, please cite our paper:
 
 ```bibtex
-@article{yourname2025,
+@article{,
   title={Guideline-Grounded Large Language Models for Extracting Genome-Informed Clinical Recommendations from Electronic Health Records},
-  author={Your Name et al.},
-  journal={Journal of the American Medical Informatics Association},
-  year={2025}
+  author={Xin et al.},
+  journal={},
+  year={2026}
 }
 ```
 
