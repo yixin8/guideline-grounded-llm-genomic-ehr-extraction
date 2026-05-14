@@ -8,7 +8,7 @@ This repository contains the code for the paper:
 
 > **Guideline-Grounded Large Language Models for Extracting Genome-Informed Clinical Recommendations from Electronic Health Records**
 
-Precision medicine increasingly requires delivery and tracking of genetics-informed risk assessments (GIRAs), which are frequently documented in unstructured electronic health record (EHR) notes. This project evaluates guideline-grounded large language model (LLM) approaches for automatically extracting genomics-informed clinical recommendations (e.g., specialist referrals, laboratory tests, imaging) from EHR notes in the eMERGE study.
+Precision medicine increasingly requires delivery and tracking of genome-informed risk assessments (GIRAs), which are frequently documented in unstructured electronic health record (EHR) notes. This project evaluates guideline-grounded large language model (LLM) approaches for automatically extracting genome-informed clinical recommendations (e.g., specialist referrals, laboratory tests, imaging) from EHR notes in the eMERGE study.
 
 We benchmark three LLMs — **GPT-4o**, **LLaMA-3.1-8B-Instruct**, and **LLaMA-3.3-70B-Instruct** — across three prompting strategies:
 - **Baseline prompting**
