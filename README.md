@@ -135,4 +135,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 ## Contact
 
-For questions or feedback, please open an issue or contact [your email].
+For questions or feedback, please open an issue or contact [yi.xin@vanderbilt.edu].
