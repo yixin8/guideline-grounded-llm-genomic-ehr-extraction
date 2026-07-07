@@ -65,42 +65,73 @@ def format_prompt(note):
                 You are a medical expert. Your task is to analyze a medical note and extract referral information in a structured JSON format. Do not include any explanations, disclaimers, or text outside of the JSON object.
                 <|eot_id|>
                 <|start_header_id|>user<|end_header_id|>
-                Follow these steps carefully:
-                
-                Step 1 – Determine Specialist Referral
-                Check if the medical note indicates that the patient was referred to any of the following specialists:
-                
-                Oncologist, Cardiologist, Gynecologist, Electrophysiologist (cardiology), Lipids Specialist (cardiology), Surgeon (for oncology-related findings), Nephrologist, Endocrinologist, Urologist, Dietician, Nutritionist, Genetic Counselor.
-                
-                - If a referral to any of these specialists is found, extract and quote the relevant portion of the note and place it in the `referral_confirmation_citation` field.  
-                - If no referral to any of the listed specialists is mentioned, set `referral_confirmation_citation` to `null`.
-                
-                Step 2 – Identify Specialist Type
-                If a referral is confirmed, identify the type of specialist (limited to the list above).
-                - Quote the part of the note that names the specialist type and place it in `specialist_type_citation`.  
-                - If no specific specialist type from the list is provided, set both `specialist_type` and `specialist_type_citation` to `null`.
-                
-                Step 3 – Output Format
-                Return the output in the following JSON structure:
-                
+                Task:
+                Using ONLY the MEDICAL NOTE {note}, identify clinical actions that are explicitly documented as being initiated, ordered, or performed in response to genetic findings or a Genome-informed Risk Assessment (GIRA).
+
+                Definition:
+                A GIRA-informed clinical action is one that the MEDICAL NOTE explicitly links to:
+                - a genetic result, variant, mutation, polygenic risk, calculated risk (e.g., BOADICEA), 
+                – a documented Genome-Informed Risk Assessment or interpretation.
+
+                Rules:
+                –	The MEDICAL NOTE is the ONLY evidence that an action occurred.
+                –	The MEDICAL NOTE must explicitly indicate a genetic or GIRA-related reason for the action.
+                –	Do NOT infer causality, assume intent, or recommend actions.
+                –	Only consider genetic results related to the following conditions:
+                -	Asthma
+                -	Atrial fibrillation
+                -	Breast cancer
+                -	Chronic kidney disease
+                -	Coronary heart disease
+                -	Hypercholesterolemia
+                -	Obesity / BMI
+                -	Prostate cancer
+                -	Type 1 diabetes
+                -	Type 2 diabetes
+
+                Action Types (GIRA-Aligned):
+                –	referral
+                –	lab_test
+                –	imaging_or_monitoring
+
+                Genetic-Related Specialist Referrals:
+                Only classify an action as a referral if the MEDICAL NOTE explicitly documents referral to one of the following AND links it to a genetic or GIRA-related reason:
+
+                –	Oncologist
+                –	Surgeon (oncology-related)
+                –	Cardiologist
+                –	Electrophysiologist (cardiology)
+                –	Lipids Specialist (cardiology)
+                –	Nephrologist
+                –	Endocrinologist
+                –	Gynecologist
+                –	Urologist
+                –	Dietician
+                –	Nutritionist
+                –	Genetic Counselor
+
+                Extraction:
+                For each GIRA-informed action explicitly documented, extract:
+
+                –	action_type
+                –	action_name (e.g., cardiology referral, lipid panel, ECG, renal ultrasound)
+                –	evidence_citation (verbatim text demonstrating both the action and its genetic/GIRA-informed reason)
+
+                Output (JSON Only):
+
                 {{
-                  "referred": true or false,
-                  "specialists": [
+                "actions_present": true or false,
+                "actions": [
                     {{
-                      "specialist_type": "type_of_specialist" or null,
-                      "referral_confirmation_citation": "Text from the medical note confirming referral" or null,
-                      "specialist_type_citation": "Text from the medical note specifying the specialist type" or null
+                    "action_type": string,
+                    "action_name": string,
+                    "evidence_citation": string
                     }}
                     ...
-                    /* repeat for additional specialists if applicable */
-                  ]
+                    /* repeat for additional clinical actions if applicable */]
                 }}
-    
-                Now analyze the following medical note: {note}
-                
-                Please only output the JSON structure.
-                <|eot_id|>
-                <|start_header_id|>assistant<|end_header_id|> """
+               <|eot_id|>
+               <|start_header_id|>assistant<|end_header_id|> """
 
 def main():
     logging.basicConfig(level=logging.INFO)

@@ -135,9 +135,9 @@ def format_prompt(note):
                 Use the GIRA-RELATED RECOMMENDATION CONTEXT provided below ONLY to determine whether an action qualifies as GIRA-triggered and to classify the action type.
 
                 DEFINITION:
-                A GIRA-triggered clinical action is one that the MEDICAL NOTE explicitly links to:
-                - a genetic result, variant, mutation, polygenic risk, or
-                - a documented genetic-informed risk assessment or interpretation.
+                A GIRA-informed clinical action is one that the MEDICAL NOTE explicitly links to:
+                - a genetic result, variant, mutation, polygenic risk, calculated risk (e.g., BOADICEA), 
+                – a documented Genome-Informed Risk Assessment or interpretation.
 
                 RULES:
                 - The MEDICAL NOTE is the ONLY evidence that an action occurred.
