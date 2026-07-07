@@ -103,9 +103,8 @@ python run_llama_GIRA_RAG.py
 ## Evaluation
 
 Model outputs were evaluated against manual chart review (N=18 patients; N=34 documents) using:
-- **Accuracy** (TP/34)
-- **Precision** (TP/[TP+FP])
-- **Recall** (TP/[TP+FN])
+- **Precision** 
+- **Recall** 
 - **F1 Score**
 - **Computational efficiency** (runtime/throughput)
 - **Resource utilization** (API and electricity costs)
